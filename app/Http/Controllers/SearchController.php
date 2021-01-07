@@ -40,31 +40,31 @@ class SearchController extends Controller
          }
          return null;
     }
-    function show(Request $req)
-    {
-        $data= Movies::select("mName")
-         ->where("mName", "LIKE", "%{$req->input('query')}%")->get();
-         if($data===null)
-         {
-             $string=$req->input('query');
-             if(strlen($string)>3)
-             {
-                Movies::create([
-                    "mName" => $string
-                ]);
-             }
-         }
-         else{
-         $accData=array();
-         foreach($data as $d)
-         {
-            $accData[] = $d->mName;
-         }
+    // function show(Request $req)
+    // {
+    //     $data= Movies::select("mName")
+    //      ->where("mName", "LIKE", "%{$req->input('query')}%")->get();
+    //      if($data===null)
+    //      {
+    //          $string=$req->input('query');
+    //          if(strlen($string)>3)
+    //          {
+    //             Movies::create([
+    //                 "mName" => $string
+    //             ]);
+    //          }
+    //      }
+    //      else{
+    //      $accData=array();
+    //      foreach($data as $d)
+    //      {
+    //         $accData[] = $d->mName;
+    //      }
         
-        return response()->json($accData);
-         }
-         return null;
-        // return "usman";
-        // //->where("id", 1)->get();
-    }
+    //     return response()->json($accData);
+    //      }
+    //      return null;
+    //     // return "usman";
+    //     // //->where("id", 1)->get();
+    // }
 }
